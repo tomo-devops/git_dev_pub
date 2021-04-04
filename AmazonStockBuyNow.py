@@ -41,8 +41,8 @@ def lambda_handler(event, context):
     res = ''
     d_today = datetime.date.today()
     
-    ### debug ####################################################
-#    d_today = datetime.datetime.strptime('2020/03/12', '%Y/%m/%d')
+    ### debug #####################################################
+    #d_today = datetime.datetime.strptime('2020/03/12', '%Y/%m/%d')
     
     d_today = d_today + datetime.timedelta(hours=7) #ADD JAPAN TIME
     print (str(d_today))
@@ -67,8 +67,8 @@ def lambda_handler(event, context):
         sns = boto3.client('sns')
         subject = 'Amazon Stock Buy Now !!'
         message = subject + '\r\n' + \
-                    str(d_today) + '：' + str(stock_today) + '\r\n' + \
-                    str(d_lastyear) + '：' + str(stock_lastyear)
+                    str(d_today) + ': ' + str(stock_today) + '\r\n' + \
+                    str(d_lastyear) + ': ' + str(stock_lastyear)
         response = sns.publish(
             TopicArn = sns_arn,
             Subject = subject,
